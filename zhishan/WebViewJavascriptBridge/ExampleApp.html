@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0,maximum scale=1.0">
+</head>
+<body>
+<script>
+    
+        function connectWebViewJavascriptBridge(callback) {
+            if (window.WebViewJavascriptBridge) {
+                callback(WebViewJavascriptBridge)
+            } else {
+                document.addEventListener('WebViewJavascriptBridgeReady', function() {
+                                          callback(WebViewJavascriptBridge)
+                                          }, false)
+            }
+        }
+        connectWebViewJavascriptBridge(function(bridge) {
+                                       
+                                       /* Init your app here */
+                                       bridge.init(function(message, responseCallback) {
+                                                   alert("oc传过来的数据:" + message)
+                                                   
+                                                   if (responseCallback) {
+                                                   responseCallback("点击按钮")
+                                                   }
+                                                   
+                                                   })
+                                       //调用oc中camera方法
+                                       bridge.callHandler("camera")
+                                       //注册一个方法给oc调用
+                                       bridge.registerHandler("showAlert", function(data) {
+                                                              alert(data)
+                                                              })
+                                       //绑定方法
+                                       var board = document.getElementById("1111");
+                                       board.onclick = function(e) {
+                                       e.preventDefault()
+                                       //调用oc中camera方法,传参有回调
+                                       bridge.callHandler("camera",//oc中的方法camera
+                                                          {"foo": "bar"},//参数
+                                                          function(response)//回调
+                                                          {
+                                                            alert(response)
+                                                          })
+                                       //调用oc中camera方法无参无回调
+<!--                                       bridge.callHandler("camera")-->
+                                       
+                                       }
+                                     
+                                       })
+
+   function chooseType(){
+       alert("1")
+   }
+	</script>
+    <a href="#" onClick="chooseType()" id ="111">头像</a>
+    <p  id ="1111">调用摄像机</p>
+    <button type="button">button</button>
+</body></html>

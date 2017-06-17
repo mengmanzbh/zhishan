@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" /> 
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="black" name="apple-mobile-web-app-status-bar-style" />
+<title>找不到</title>
+</head>
+<style type="text/css">
+	*{padding: 0;margin: 0;font-family: "黑体";}
+	section{width: 100%;}
+	.no-found{max-width: 960px;margin: 0 auto;}
+	.no-found img{width:80px;left: 50%;position: relative;transform: translate(-50%, 20px);margin-bottom: 30px;}
+	.no-found p{text-align: center;padding: 5px 0;}
+	.no-found .p-1{color: #333;font-size: 20px;}
+	.no-found .p-2{color: #999;font-size: 12px;}
+	.no-found .p-3{color: #666;font-size: 12px;}
+	.no-found .p-4{color: #666;font-size: 22px;}
+</style>
+<script>
+function goback(){
+window.history.back(-1);
+}
+</script>
+<body>
+	<section>
+		<div class="no-found">
+			<img src="nofound.png" class="img" />
+			<p class="p-1">无网络连接</p>
+			<p class="p-3">没有链接到网络导致无法打开此网页</p>
+   <p class="p-4"><button type="button"  onClick="goback()" style = "width:80%;height:45px; text-align:center;" >返回</button></p>
+		</div>
+	</section>	
+</body>
+</html>
+
